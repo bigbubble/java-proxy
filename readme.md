@@ -8,6 +8,7 @@ Class<?>[] interfaces ： 代理类实现的接口列表 （the list of interfac
 InvocationHandler h：每个代理实例都有一个关联的调用处理程序。当在代理实例上调用方法时，该方法调用被编码并调度到其invoke方法 （the invocation handler to dispatch method invocations to；[InvocationHandler 接口注释：Each proxy instance has an associated invocation handler. When a method is invoked on a proxy instance, the method invocation is encoded and dispatched to the {@code invoke} method of its invocation handler.]）
 
 ######实现原理
+
 1.调用 java.lang.reflect.Proxy#newProxyInstance  
 2.newProxyInstance方法内使用,生成类实例：Class<?> cl = getProxyClass0(loader, intfs);  
 3.getProxyClass0调用proxyClassCache.get(loader, interfaces);(proxyClassCache 定义：private static final WeakCache<ClassLoader, Class<?>[], Class<?>>  proxyClassCache = new WeakCache<>(new KeyFactory(), new ProxyClassFactory()); ProxyClassFactory是Proxy的一个静态内部类，实现了WeakCache的内部接口BiFunction的apply方法)
@@ -50,6 +51,7 @@ public static byte[] generateProxyClass(final String var0, Class[] var1) {
 
 
 ####生成的代理类
+
 <pre>
 //
 // Source code recreated from a .class file by IntelliJ IDEA
