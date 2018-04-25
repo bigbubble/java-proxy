@@ -1,4 +1,5 @@
 #JDK代理
+
 #####实现方法 ：java.lang.reflect.Proxy#newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h) throws IllegalArgumentException
 
 ######参数：
