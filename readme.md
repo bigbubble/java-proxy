@@ -1,13 +1,13 @@
-#JDK代理
+# JDK代理
 
-#####实现方法 ：java.lang.reflect.Proxy#newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h) throws IllegalArgumentException
+##### 实现方法 ：java.lang.reflect.Proxy#newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler h) throws IllegalArgumentException
 
-######参数：
+###### 参数：
 ClassLoader loader ： 定义代理类的类加载器 （the class loader to define the proxy class）  
 Class<?>[] interfaces ： 代理类实现的接口列表 （the list of interfaces for the proxy class to implement）  
 InvocationHandler h：每个代理实例都有一个关联的调用处理程序。当在代理实例上调用方法时，该方法调用被编码并调度到其invoke方法 （the invocation handler to dispatch method invocations to；[InvocationHandler 接口注释：Each proxy instance has an associated invocation handler. When a method is invoked on a proxy instance, the method invocation is encoded and dispatched to the {@code invoke} method of its invocation handler.]）
 
-######实现原理
+###### 实现原理
 
 1.调用 java.lang.reflect.Proxy#newProxyInstance  
 2.newProxyInstance方法内使用,生成类实例：Class<?> cl = getProxyClass0(loader, intfs);  
@@ -50,7 +50,7 @@ public static byte[] generateProxyClass(final String var0, Class[] var1) {
 7. native方法，生成Class实例 return defineClass0(loader, proxyName,proxyClassFile, 0, proxyClassFile.length); //native方法 生成Class实例
 
 
-####生成的代理类
+#### 生成的代理类
 
 <pre>
 //
