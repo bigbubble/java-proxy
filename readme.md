@@ -10,7 +10,7 @@ InvocationHandler h：每个代理实例都有一个关联的调用处理程序�
 ###### 实现原理
 
 1.调用 java.lang.reflect.Proxy#newProxyInstance  
-2.newProxyInstance方法内使用,生成类实例：Class<?> cl = getProxyClass0(loader, intfs);   
+2.newProxyInstance方法内使用,生成类实例：Class<?> cl = getProxyClass0(loader, intfs);    
 3.getProxyClass0调用proxyClassCache.get(loader, interfaces);(proxyClassCache 定义：private static final WeakCache<ClassLoader, Class<?>[], Class<?>>  proxyClassCache = new WeakCache<>(new KeyFactory(), new ProxyClassFactory()); ProxyClassFactory是Proxy的一个静态内部类，实现了WeakCache的内部接口BiFunction的apply方法)  
 4.proxyClassCache.get调用supplier.get();JDK对代理进行了缓存，如果已经存在相应的代理类，则直接返回，否则才会通过ProxyClassFactory来创建代理，调用ProxyClassFactory.apply()方法；  
 5.ProxyClassFactory.apply()  
